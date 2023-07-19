@@ -1,0 +1,17 @@
+name: ServerJava17
+
+on: workflow_dispatch
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    timeout-minutes: 9999
+    steps:
+    - name: Downloading Java.
+      run: |
+        Invoke-WebRequest https://api.papermc.io/v2/projects/paper/versions/1.19.4/builds/549/downloads/paper-1.19.4-549.jar -OutFile paper.jar
+    - name: Run Server
+      run:
+        Java -jar paper.jar
+        
